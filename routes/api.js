@@ -40,7 +40,6 @@ router.get("/", (req, res) => {
   Reminder.find({ username: req.query.username })
     .then((data) => {
       res.json(data);
-      // res.sendFile(__dirname + '/my-app-first/build/index.html');
     })
     .catch((err) => {
       console.log("Error: ", err);

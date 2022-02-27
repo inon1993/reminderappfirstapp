@@ -47,18 +47,4 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/api", routes);
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "my-app-first", "build", "index.html"));
-});
-
-if(process.env.NODE_ENV === 'production') {
-  app.use(express.static('my-app-first/build'));
-  // app.get('*', (req, res) => {
-  //   res.sendFile(path.resolve(__dirname, 'my-app-first/build', 'index.html'));
-  // });
-}
-// router.get('/', (req, res) {
-//   res.sendFile(__dirname + '/index.html')
-// })
-
 app.listen(PORT, console.log(`Server is starting at ${PORT}`));
