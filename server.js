@@ -45,6 +45,10 @@ mongoose.connection.on("connected", () => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static('my-app-first/build'));
+};
+
 app.use("/api", routes);
 
 app.listen(PORT, console.log(`Server is starting at ${PORT}`));
