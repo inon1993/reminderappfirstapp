@@ -1,0 +1,77 @@
+.reminder-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+  width: 80vw;
+  padding: 0;
+  border-radius: 25px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 8px;
+  /* padding: 1rem 0; */
+}
+
+.color-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  width: 80vw;
+  padding: 1rem;
+  border-radius: 25px;
+}
+
+.reminder {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  margin: 1rem 0;
+  width: 85%;
+  /* white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; */
+  word-wrap: break-word;
+  cursor: pointer;
+}
+
+.reminder-title {
+  font-size: 2rem;
+  margin: 0 0 0.5rem 0;
+  /* min-width: 100%;
+  max-width: 100%; */
+  white-space: pre-wrap;
+}
+
+.reminder-body {
+  font-size: 1.5rem;
+  margin: 0 0 0.5rem 0;
+  /* min-width: 100%;
+  max-width: 100%; */
+  white-space: pre-wrap;
+}
+
+.reminder-date {
+  font-size: 0.8rem;
+  color: rgb(173, 173, 173);
+  margin: 0.2rem 0 0;
+}
+
+@media only screen and (min-width: 1050px) {
+  .reminder-card {
+    width: 50vw;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .reminder {
+    margin: 0;
+  }
+  .reminder-title {
+    font-size: 1.5rem;
+  }
+
+  .reminder-body {
+    font-size: 1rem;
+  }
+}

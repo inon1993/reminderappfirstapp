@@ -1,0 +1,43 @@
+.logout {
+  /* margin-top: 1rem; */
+  display: flex;
+  height: 60px;
+  width: auto;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  background: #ff5804;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  padding-right: 1rem;
+  transition: 0.3s;
+}
+
+.logout:hover {
+  background: #ff0146;
+}
+
+.icon {
+  font-size: 1.5rem;
+  padding: 1rem 1rem 1rem 0.5rem;
+  margin: 0;
+}
+
+@media only screen and (max-width: 500px) {
+  .text {
+    display: none;
+  }
+  .icon {
+    font-size: 1.3rem;
+    padding: 0.7rem;
+  }
+  .logout {
+    height: 47px;
+    border-radius: 13px;
+    padding: 0;
+  }
+}

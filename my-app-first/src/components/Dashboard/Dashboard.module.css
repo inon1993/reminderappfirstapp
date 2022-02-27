@@ -1,0 +1,83 @@
+.dashboard {
+  /* background: url(../../../public/img/reminder-wallpaper.jpg); */
+  background-size: cover;
+  background-position: fixed;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 60%;
+  min-height: 100vh;
+  padding: 0 20% 3rem;
+}
+
+@media only screen and (max-width: 1050px) {
+  .dashboard {
+    width: 95%;
+    padding: 0 2.5% 2rem;
+  }
+}
+
+.hello-user {
+  /* margin-top: 7.5rem; */
+  font-size: 3rem;
+}
+
+.name {
+  color: #518679;
+}
+
+.nav {
+  position:fixed;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ff5804;
+  /* margin-bottom: 2rem; */
+  backdrop-filter: blur(10px);
+  /* -webkit-filter: blur(8px); */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  z-index: 10;
+}
+
+.logo {
+  color: white;
+  font-size: 2rem;
+  font-family: "Fugaz One", cursive;
+  transform: rotate(-3deg);
+  margin: 1rem;
+}
+
+.span {
+  color: white;
+  font-family: "Fugaz One", cursive;
+  text-decoration: underline #ff5804;
+}
+
+
+
+.nav2 {
+  visibility: hidden;
+  position:sticky;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ff5804;
+  /* margin-bottom: 2rem; */
+}
+
+.logo2 {
+  font-family: "Fugaz One", cursive;
+  transform: rotate(-3deg);
+}
+
+.span2 {
+  font-family: "Fugaz One", cursive;
+  text-decoration: underline #ff5804;
+}

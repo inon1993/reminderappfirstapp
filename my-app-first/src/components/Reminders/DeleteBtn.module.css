@@ -1,0 +1,37 @@
+.delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 60px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  background: #ff5804;
+  color: white;
+  cursor: pointer;
+  padding: 0;
+  transition: 0.3s;
+}
+
+.delete:hover {
+  background: #ff0146;
+}
+
+.icon {
+  font-size: 1.5rem;
+  /* padding: 1rem; */
+  margin: 0;
+}
+
+@media only screen and (max-width: 500px) {
+  .delete {
+    height: 40px;
+    width: 40px;
+    border-radius: 12px;
+  }
+  .icon {
+    font-size: 1rem;
+    /* padding: 0.8rem; */
+  }
+}

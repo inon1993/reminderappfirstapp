@@ -1,0 +1,128 @@
+.sign-up-form {
+  padding: 30px 20px 15px;
+  display: flex;
+  flex-direction: column;
+  color: #131313;
+  width: 75%;
+  height: 75%;
+}
+
+.fname,
+.lname,
+.email,
+.username,
+.password {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #518679;
+}
+
+.fname-input,
+.lname-input,
+.email-input,
+.un-input,
+.pw-input {
+  border: none;
+  /* border-bottom: 1px solid #000; */
+  /* background: transparent; */
+  outline: none;
+  height: 30px;
+  color: #131313;
+  font-size: 1rem;
+  margin: 0.3rem 0 1.2rem;
+  padding: 3px 10px;
+  background: #edf3f3;
+  border-radius: 13px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /* align-items: flex-start; */
+}
+
+.sign-up-button {
+  width: 40%;
+  margin: 0 5%;
+  border: none;
+  outline: none;
+  height: 40px;
+  background-image: linear-gradient(to right, #ff5804 0%, #ff0146 50%, #ff5804 100%);
+  background-size: 200%;
+  background-position: left;
+  font-size: 18px;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: rgba(255, 87, 4, 0.75) 0px 13px 27px -8px,
+    rgba(255, 1, 70, 0.8) 0px 8px 16px -11px;
+  /* width: 40%; */
+  transition: 1s;
+}
+
+.sign-up-button:hover {
+  background-position: right;
+}
+
+.close-button {
+  width: 40%;
+  margin: 0 5%;
+  /* margin-left: 30%; */
+  border: 1px solid #131313;
+  outline: none;
+  height: 40px;
+  background: none;
+  font-size: 1rem;
+  color: #131313;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close-button:hover {
+  background: #131313;
+  color: white;
+  border: none;
+}
+
+.invalid-input {
+  border-color: red;
+  background: rgb(255, 175, 161);
+  color: white;
+}
+
+@media only screen and (max-width: 430px) {
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sign-up-button {
+    width: 80%;
+  }
+
+  .close-button {
+    width: 80%;
+    margin: 8% 0 0 0;
+  }
+}
+
+.invalid-signup-msg {
+  width: 100%;
+  margin: 0 0 1rem 0;
+  font-size: 15px;
+  color: tomato;
+  /* animation: wiggle 2s;
+  animation-iteration-count: 1; */
+}
+/* 
+@keyframes wiggle {
+  0% {
+    color: rgb(122, 0, 0);
+  }
+  50% {
+    color: tomato;
+  }
+} */

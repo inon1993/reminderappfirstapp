@@ -1,0 +1,102 @@
+.login-form {
+  padding: 40px 20px 0;
+  display: flex;
+  flex-direction: column;
+  color: #131313;
+  width: 75%;
+  height: 75%;
+}
+
+@media only screen and (max-width: 303px) {
+  .login-form {
+    padding: 30px 20px 0;
+  }
+}
+
+.username,
+.password {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #518679;
+}
+
+.un-input,
+.pw-input {
+  border: none;
+  /* border-bottom: 1px solid #000; */
+  padding: 3px 10px;
+  background: #edf3f3;
+  outline: none;
+  height: 30px;
+  color: #131313;
+  font-size: 1rem;
+  margin: 0.3rem 0 1.2rem;
+  border-radius: 13px;
+}
+
+.login-button {
+  border: none;
+  outline: none;
+  height: 40px;
+  background-image: linear-gradient(to right, #ff5804 0%, #ff0146 50%, #ff5804 100%);
+  background-size: 200%;
+  background-position: left;
+  font-size: 18px;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  /* box-shadow: rgba(255, 87, 4, 0.75) 0px 25px 50px -12px; */
+  box-shadow: rgba(255, 87, 4, 0.75) 0px 13px 27px -8px,
+    rgba(255, 1, 70, 0.8) 0px 8px 16px -11px;
+  transition: 1s;
+
+  /* animation: slide 20s infinite; */
+}
+
+.login-button:hover {
+  background-position: right;
+}
+
+.invalid-login-msg {
+  text-align: center;
+  width: 100%;
+  margin: 1rem 0 0 0;
+  font-size: 15px;
+  color: tomato;
+}
+
+/* @keyframes slide {
+  0% {
+    background: crimson;
+  }
+  25% {
+    background: gold;
+  }
+  50% {
+    background: orangered;
+  }
+  75% {
+    background: chartreuse;
+  }
+}
+
+
+         .btn-grad {background-image: linear-gradient(to right, #FF512F 0%, #F09819  51%, #FF512F  100%)}
+         .btn-grad {
+            margin: 10px;
+            padding: 15px 45px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;            
+            box-shadow: 0 0 20px #eee;
+            border-radius: 10px;
+            display: block;
+          }
+
+          .btn-grad:hover {
+            background-position: right center; /* change the direction of the change here */
+/* color: #fff;
+            text-decoration: none;
+          } */

@@ -1,0 +1,164 @@
+import { useRef, useState, useReducer, useEffect } from 'react';
+
+import classes from './SignUpForm.module.css';
+
+// const formReducer = (state, action) => {
+//     if(action.type === 'FNAME') {
+//         return {value: action.val, fname_isValid: action.val.trim().length > 1, lname_isValid: state.lname_isValid, email_isValid: state.email_isValid, username_isValid: state.username_isValid, password_isValid: state.password_isValid}
+//     }
+//     if(action.type === 'LNAME') {
+//         return {value: action.val, fname_isValid: state.fname_isValid, lname_isValid: action.val.trim().length > 1, email_isValid: state.email_isValid, username_isValid: state.username_isValid, password_isValid: state.password_isValid}
+//     }
+//     if(action.type === 'EMAIL') {
+//         return {value: action.val, fname_isValid: state.fname_isValid, lname_isValid: state.lname_isValid, email_isValid: action.val.trim().length > 2 && action.val.includes('@'), username_isValid: state.username_isValid, password_isValid: state.password_isValid}
+//     }
+//     if(action.type === 'UNAME') {
+//         return {value: action.val, fname_isValid: state.username_isValid, lname_isValid: state.lname_isValid, email_isValid: state.email_isValid, username_isValid: action.val.trim().length > 1, password_isValid: state.password_isValid}
+//     }
+//     if(action.type === 'PASSWORD') {
+//         return {value: action.val, fname_isValid: state.username_isValid, lname_isValid: state.lname_isValid, email_isValid: state.email_isValid, username_isValid: state.username_isValid, password_isValid: action.val.trim().length > 1}
+//     }
+//     return {value: '', fname_isValid: null, lname_isValid: null, email_isValid: null, username_isValid: null, password_isValid: null};
+// }
+
+const SignUpForm = props => {
+
+//     const [formValid, dispachFormValid] = useReducer(formReducer, {value: '', fname_isValid: true, lname_isValid: true, email_isValid: true, username_isValid: true, password_isValid: true});
+
+// const fnameRef = useRef();
+//     const lnameRef = useRef();
+//     const usernameRef = useRef();
+//     const passwordRef = useRef();
+//     const emailRef = useRef();
+
+// let fname = '';
+//         let lname = '';
+//         let email = '';
+//         let username = '';
+//         let password = '';
+
+// useEffect(() => {
+//          fname = fnameRef.current.value;
+//          lname = lnameRef.current.value;
+//          email = emailRef.current.value;
+//          username = usernameRef.current.value;
+//          password = passwordRef.current.value;
+//     validation(fname, lname, email, username, password);
+// }, [fname, lname, email, username, password]);
+
+//     const [fnameIsValid, setFnameIsValid] = useState(null);
+//     const [lnameIsValid, setLnameIsValid] = useState(null);
+//     const [emailIsValid, setEmailIsValid] = useState(null);
+//     const [usernameIsValid, setUsernameIsValid] = useState(null);
+//     const [passwordIsValid, setPasswordIsValid] = useState(null);
+
+    
+
+    // const validateInput = {
+    //     fname: undefined,
+    //     lname: undefined,
+    //     email: undefined,
+    //     username: undefined,
+    //     password: undefined,
+    // };
+
+    const newUserHandler = event => {
+        event.preventDefault();
+
+        // const fname = fnameRef.current.value;
+        // const lname = lnameRef.current.value;
+        // const email = emailRef.current.value;
+        // const username = usernameRef.current.value;
+        // const password = passwordRef.current.value;
+
+        // if(fname.trim().length < 1 || lname.trim().length < 1 || email.trim().length < 1 || username.trim().length < 1 || password.trim().length < 1){
+        //     setIsValidInput(false);
+        //     return;
+        // };
+
+        // dispachFormValid({ type: 'FNAME', val: fname});
+        // // validateInput.fname = formValid.isValid;
+        // dispachFormValid({ type: 'LNAME', val: lname});
+        // // validateInput.lname = formValid.isValid;
+        // dispachFormValid({ type: 'EMAIL', val: email});
+        // // validateInput.email = formValid.isValid;
+        // dispachFormValid({ type: 'UNAME', val: username});
+        // // validateInput.username = formValid.isValid;
+        // dispachFormValid({ type: 'PASSWORD', val: password});
+        // // validateInput.password = formValid.isValid;
+        // if(!(formValid.fname_isValid) || !(formValid.lname_isValid) || !(formValid.email_isValid) || !(formValid.username_isValid) || !(formValid.password_isValid)) {
+        //     return;
+        // }
+
+        // validation(fname, lname, email, username, password);
+
+        // console.log(fnameIsValid);
+        
+
+        // if(!fnameIsValid || !lnameIsValid || !emailIsValid || !usernameIsValid || !passwordIsValid) {
+        //     console.log(fnameIsValid);
+        //     console.log(lnameIsValid);
+        //     console.log(emailIsValid);
+        //     console.log(usernameIsValid);
+        //     console.log(passwordIsValid);
+        //     return;
+        // }
+
+        props.onSignUp(/*fname, lname, email, username, password*/);
+    }
+
+    // const validation = (fname, lname, email, username, password) => {
+    //     if(fname.trim().length < 1) {
+    //         setFnameIsValid(false);   
+    //     } else {
+    //         setFnameIsValid(true);
+    //     }
+    //     if(lname.trim().length < 1) {
+    //         setLnameIsValid(false);
+    //     } else {
+    //         setLnameIsValid(true);
+    //     }
+    //     if(email.trim().length < 2 || !(email.includes('@'))) {
+    //         setEmailIsValid(false);
+    //     } else {
+    //         setEmailIsValid(true);
+    //     }
+    //     if(username.trim().length < 1) {
+    //         setUsernameIsValid(false);
+    //     } else {
+    //         setUsernameIsValid(true);
+    //     }
+    //     if(password.trim().length < 1) {
+    //         setPasswordIsValid(false);
+    //     } else {
+    //         setPasswordIsValid(true);
+    //     }
+    //     // console.log(fnameIsValid);
+    // }
+
+    const closeSignUpHandler =() => {
+        props.onClose();
+    }
+
+    return (
+        <form className={classes['sign-up-form']}>
+            <label className={classes.fname}>First Name:</label>
+            <input className={`${classes['fname-input']} ${fnameIsValid === false && classes['invalid-input']}`} type='text' ref={fnameRef} />
+            <label className={classes.lname}>Last Name:</label>
+            <input className={`${classes['lname-input']} ${lnameIsValid === false && classes['invalid-input']}`} type='text' ref={lnameRef} />
+            <label className={classes.email}>E-Mail:</label>
+            <input className={`${classes['email-input']} ${emailIsValid === false && classes['invalid-input']}`} type='email' ref={emailRef} />
+            <label className={classes.username}>User Name:</label>
+            <input className={`${classes['un-input']} ${usernameIsValid === false && classes['invalid-input']}`} type='text' ref={usernameRef} />
+            <label className={classes.password}>Password:</label>
+            <input className={`${classes['pw-input']} ${passwordIsValid === false && classes['invalid-input']}`} type='text' ref={passwordRef} />
+            <div className={classes.buttons}>
+                <button className={classes['sign-up-button']} type="submit" onClick={newUserHandler}>Sign Up!</button>
+                <button className={classes['close-button']} onClick={closeSignUpHandler}>Cancel</button>
+            </div>
+            
+        </form>
+    );
+};
+
+export default SignUpForm;
