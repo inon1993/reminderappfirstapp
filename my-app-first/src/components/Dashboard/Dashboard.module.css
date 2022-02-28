@@ -28,7 +28,7 @@
 }
 
 .nav {
-  position:fixed;
+  position: fixed;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -57,11 +57,9 @@
   text-decoration: underline #ff5804;
 }
 
-
-
 .nav2 {
   visibility: hidden;
-  position:sticky;
+  position: sticky;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -80,4 +78,10 @@
 .span2 {
   font-family: "Fugaz One", cursive;
   text-decoration: underline #ff5804;
+}
+
+@media only screen and (max-width: 600px) {
+  .hello-user {
+    font-size: 2rem;
+  }
 }

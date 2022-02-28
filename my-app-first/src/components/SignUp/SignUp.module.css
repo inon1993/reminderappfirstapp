@@ -21,4 +21,7 @@
   .sign-up-card {
     width: 80vw;
   }
+  .sign-up-hello {
+    font-size: 1.7rem;
+  }
 }
