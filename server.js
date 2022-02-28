@@ -54,4 +54,4 @@ if(process.env.NODE_ENV === 'production') {
 
 app.use("/api", routes);
 
-app.listen(process.env.PORT, console.log(`Server is starting at ${PORT}`));
+app.listen(process.env.PORT || 8080, console.log(`Server is starting at ${PORT}`));
