@@ -47,6 +47,9 @@ app.use(express.urlencoded({ extended: false }));
 
 if(process.env.NODE_ENV === 'production') {
   app.use(express.static('my-app-first/build'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'my-app-first', 'build', 'index.html'));
+  });
 };
 
 app.use("/api", routes);
