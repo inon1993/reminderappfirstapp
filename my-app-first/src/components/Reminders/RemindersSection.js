@@ -27,7 +27,7 @@ const ReminderSection = (props) => {
   const getReminders = () => {
     // setIsLoading(true);
     axios
-      .get("/api", { params: { username: ctx.username } })
+      .get("/api/data", { params: { username: ctx.username } })
       .then((response) => {
         setReminderList(response.data.reverse());
         console.log("Data has been received.");
