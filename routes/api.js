@@ -37,6 +37,7 @@ client.setApiKey(process.env.API_KEY_SENDGRID);
 // })
 
 router.get("/data", (req, res) => {
+  console.log(req.query.username);
   Reminder.find({ username: req.query.username })
     .then((data) => {
       res.json(data);
