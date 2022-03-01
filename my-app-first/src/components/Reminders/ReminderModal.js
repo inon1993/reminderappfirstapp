@@ -52,7 +52,7 @@ const ReminderModal = (props) => {
       <div className={classes.actions}>
         {!isEdit && <button className={classes.edit} onClick={editReminderHandler}>Edit</button>}
         {isEdit && <button className={classes.save} onClick={saveEditHandler}>Save</button>}
-        <button onClick={closeReminderHandler}>Close</button>
+        <button className={classes.close} onClick={closeReminderHandler}>Close</button>
       </div>
     </Modal>
   );
