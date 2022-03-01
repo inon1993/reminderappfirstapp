@@ -41,6 +41,10 @@ const ReminderModal = (props) => {
     props.onClose();
   };
 
+  const cancelEditHandler = () => {
+    setIsEdit(false);
+  }
+
   return (
     <Modal onClose={closeReminderHandler}>
       <div className={classes['modal-reminder-wrapper']}>
@@ -52,7 +56,8 @@ const ReminderModal = (props) => {
       <div className={classes.actions}>
         {!isEdit && <button className={classes.edit} onClick={editReminderHandler}>Edit</button>}
         {isEdit && <button className={classes.save} onClick={saveEditHandler}>Save</button>}
-        <button className={classes.close} onClick={closeReminderHandler}>Close</button>
+        {!isEdit && <button className={classes.close} onClick={closeReminderHandler}>Close</button>}
+        {isEdit && <button className={classes.cancel} onClick={cancelEditHandler}>Cancel</button>}
       </div>
     </Modal>
   );
