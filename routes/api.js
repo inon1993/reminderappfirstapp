@@ -362,4 +362,23 @@ router.get("/logout", (req, res) => {
   res.json({ msg: "Logout is successfull." });
 });
 
+router.patch('/edit', (req, res) => {
+  console.log('GGG ', req.body);
+  // Reminder.findOneAndUpdate({_id: req.body.id}, {title: req.body.title, body: req.body.body}, {
+  //   new: true
+  // })
+  Reminder.findOne({_id: req.body.id}, (err, foundReminder) => {
+    if(foundReminder) {
+      Reminder.updateOne({_id: foundReminder._id}, {title: req.body.title, body: req.body.body}, (err) => {
+        if(!err) {
+          console.log("UPDATED");
+          res.json({msg: "Reminder updated successfully."});
+        } else {
+          console.log(err);
+        }
+      })
+    }
+  })
+});
+
 module.exports = router;

@@ -29,7 +29,9 @@ const Reminder = (props) => {
         <ReminderModal
           title={props.title}
           body={props.body}
+          id={props.id}
           onClose={closeReminderHandler}
+          onRefresh={props.onEditReminderRefresh}
         />
       )}
       <Card className={classes["reminder-card"]} background={props.color}>

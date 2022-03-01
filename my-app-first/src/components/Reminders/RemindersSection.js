@@ -159,6 +159,7 @@ const ReminderSection = (props) => {
                 time={reminder.time}
                 color={reminder.color}
                 onDeleteReminder={deleteReminderFromList}
+                onEditReminderRefresh={getReminders}
               />
             );
           })}
