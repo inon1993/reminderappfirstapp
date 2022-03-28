@@ -11,15 +11,29 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-router.get("/data", (req, res) => {
-  Reminder.find({ username: req.query.username })
-    .then((data) => {
-      res.json(data);
-    })
-    .catch((err) => {
-      res.status(500).send("Error: ", err);
-    });
-});
+// router.get("/data", (req, res) => {
+//   Reminder.find({ username: req.query.username })
+//     .then((data) => {
+//       res.json(data);
+//     })
+//     .catch((err) => {
+//       res.status(500).send("Error: ", err);
+//     });
+// });
+
+router.get('/data', async (req, res) => {
+  try{
+    const data = await Reminder.find({username: req.query.username})
+    if(!data) {
+      data = [];
+      return res.json(data);
+    }
+    res.json(data)
+  } catch (err) {
+    res.status(500).send("Error: ", err);
+  }
+
+})
 
 router.post("/save", (req, res) => {
   const data = req.body;
