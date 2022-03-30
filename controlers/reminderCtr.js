@@ -13,4 +13,9 @@ const getData = async (req, res) => {
   }
 };
 
-module.exports = getData;
+const aaa = () => {
+    console.log("HHHHHHHHH");
+}
+
+module.exports.getData = getData;
+module.exports.aaa = aaa;

@@ -5,31 +5,28 @@ const Reminder = require("../models/reminderDB");
 const User = require("../models/reminderDBUsers");
 const ejs = require("ejs");
 const sendMail = require("../utils/sendgrid");
-const getData = require('../controlers/reminderCtr')
+const { getData } = require("../controlers/reminderCtr");
 
 ///---Passport config---///
 passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-router.get('/data', getData);
+router.get("/data", getData);
 
-router.post("/save", (req, res) => {
+router.post("/save", async (req, res) => {
   const data = req.body;
-
   const newReminder = new Reminder(data);
 
-  newReminder.save((err) => {
-    if (err) {
-      return res.status(500).json({ msg: "Sorry, internal server errors." });
-    } else {
+  try {
+    await newReminder.save( () => {
       User.findOne({ username: data.username }, (err, foundUser) => {
         if (!err) {
           const year = new Date();
           ejs.renderFile(
             "views/index.ejs",
             { title: data.title, body: data.body, year: year.getFullYear() },
-            function (err, page) {
+            (err, page) => {
               if (err) {
                 console.log(err);
               } else {
@@ -45,11 +42,13 @@ router.post("/save", (req, res) => {
           );
         }
       });
-    }
-  });
-  res.json({
-    msg: "We received your data!",
-  });
+      res.json({
+        msg: "We received your data!",
+      });
+    });
+  } catch {
+    res.status(500).json({ msg: "Sorry, internal server errors." });
+  }
 });
 
 router.delete("/delete", (req, res) => {
