@@ -26,7 +26,7 @@ app.use(morgan("tiny"));
 
 app.use(
   session({
-    secret: process.env.SECRET, /////////////////////need to put secret in .env file!!
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
   })

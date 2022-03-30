@@ -5,35 +5,14 @@ const Reminder = require("../models/reminderDB");
 const User = require("../models/reminderDBUsers");
 const ejs = require("ejs");
 const sendMail = require("../utils/sendgrid");
+const getData = require('../controlers/reminderCtr')
 
 ///---Passport config---///
 passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// router.get("/data", (req, res) => {
-//   Reminder.find({ username: req.query.username })
-//     .then((data) => {
-//       res.json(data);
-//     })
-//     .catch((err) => {
-//       res.status(500).send("Error: ", err);
-//     });
-// });
-
-router.get('/data', async (req, res) => {
-  try{
-    const data = await Reminder.find({username: req.query.username})
-    if(!data) {
-      data = [];
-      return res.json(data);
-    }
-    res.json(data)
-  } catch (err) {
-    res.status(500).send("Error: ", err);
-  }
-
-})
+router.get('/data', getData);
 
 router.post("/save", (req, res) => {
   const data = req.body;
@@ -81,6 +60,24 @@ router.delete("/delete", (req, res) => {
       res.send("wrks");
     } else {
       throw new Error(err);
+    }
+  });
+});
+
+router.patch("/edit", (req, res) => {
+  Reminder.findOne({ _id: req.body.id }, (err, foundReminder) => {
+    if (foundReminder) {
+      Reminder.updateOne(
+        { _id: foundReminder._id },
+        { title: req.body.title, body: req.body.body },
+        (err) => {
+          if (!err) {
+            res.json({ msg: "Reminder updated successfully." });
+          } else {
+            throw new Error(err);
+          }
+        }
+      );
     }
   });
 });
@@ -175,24 +172,6 @@ router.get("/auth", (req, res) => {
 router.get("/logout", (req, res) => {
   req.logout();
   res.json({ msg: "Logout is successfull." });
-});
-
-router.patch("/edit", (req, res) => {
-  Reminder.findOne({ _id: req.body.id }, (err, foundReminder) => {
-    if (foundReminder) {
-      Reminder.updateOne(
-        { _id: foundReminder._id },
-        { title: req.body.title, body: req.body.body },
-        (err) => {
-          if (!err) {
-            res.json({ msg: "Reminder updated successfully." });
-          } else {
-            throw new Error(err);
-          }
-        }
-      );
-    }
-  });
 });
 
 module.exports = router;
