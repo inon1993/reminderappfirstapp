@@ -9,6 +9,7 @@ const AddReminderForm = (props) => {
   const [time, setTime] = useState("");
   const [enteredTime, setEnteredTime] = useState(time);
   const [isColor, setIsColor] = useState("white");
+  const [fix, setFix] = useState("00:00");
 
   useEffect(() => {
     const current = new Date();
@@ -105,9 +106,26 @@ const AddReminderForm = (props) => {
 
   const changeDateHandler = (event) => {
     setEnteredDate(event.target.value);
+
+    if(event.target.value !== date) {
+      setFix("00:00");
+    } else {
+      setFix(time)
+    }
+    // console.log("date is " + enteredDate);
+    // console.log(date);
+    // setFix(time)
+    // if (event.target.value !== date) {
+    //   setFix("00:00");
+    // } else {
+    //   setFix(time);
+    // }
   };
 
   const changeTimeHandler = (event) => {
+    if(enteredDate === "" || enteredDate === date) {
+      setFix(time)
+    }
     setEnteredTime(event.target.value);
     console.log(enteredTime);
   };
@@ -152,7 +170,7 @@ const AddReminderForm = (props) => {
             id="appt"
             name="appt"
             defaultValue={time}
-            min={time}
+            min={fix}
             required
             onChange={changeTimeHandler}
           />
