@@ -8,15 +8,11 @@ const session = require("express-session");
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 const bodyParser = require("body-parser");
-// const router = express.Router();
-// const ejs = require('ejs');
 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
-
-// app.use('view engine', 'ejs');
 
 const PORT = process.env.PORT || 8080;
 
@@ -35,8 +31,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// const MONGODB_URI = 'mongodb+srv://admin-inon:inon1050650@reminder.ccizi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
-/*|| "mongodb://localhost:27017/ReminderAppDB"*/
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost:27017/ReminderAppDB"
 );
@@ -49,9 +43,6 @@ app.use(express.urlencoded({ extended: false }));
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("my-app-first/build"));
-  // app.get('*', (req, res) => {
-  //   res.sendFile(path.resolve(__dirname, 'my-app-first', 'build', 'index.html'));
-  // });
 }
 
 app.use("/api", routes);

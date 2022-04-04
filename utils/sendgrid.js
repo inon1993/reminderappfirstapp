@@ -18,15 +18,12 @@ const sendMail = (data, foundUser, page, callback) => {
     html: page,
     send_at: unixTimeStamp,
   };
-  console.log("ffff");
   sgMail
     .send(message)
     .then(() => {
-      console.log("5");
       callback(undefined, "Successfully sent mail");
     })
     .catch((error) => {
-      console.log("6");
       callback("Sending mail has Faild!", undefined)
     });
 };
