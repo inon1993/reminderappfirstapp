@@ -14,7 +14,7 @@ const ReminderSection = (props) => {
   const [isClicked, setIsClicked] = useState(false);
   const [reminderList, setReminderList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     setIsLoading(true);
@@ -46,30 +46,9 @@ const ReminderSection = (props) => {
     setIsClicked(false);
   };
 
-  // client.setApiKey(process.env.API_KEY_SENDGRID);
-
-  // const headers = {
-  //   "on-behalf-of": "ReminderApp. This header generates the API call as if the subuser account was making the call."
-  // };
-
-  // const request = {
-  //   url: `https://api.sendgrid.com/v3/mail/batch`,
-  //   method: 'POST',
-  //   headers: headers
-  // }
-
-  // client.request(request)
-  //   .then(([response, body]) => {
-  //     console.log(response.statusCode);
-  //     console.log(response.body);
-  //   })
-  //   .catch(error => {
-  //     console.error(error);
-  //   });
-
   const addReminderToListHandler = (title, body, date, time, color) => {
-    setSearchText('');
-    
+    setSearchText("");
+
     const payload = {
       title: title,
       body: body,
@@ -112,13 +91,12 @@ const ReminderSection = (props) => {
       });
   };
 
-  const searchHandler = event => {
+  const searchHandler = (event) => {
     setSearchText(event.target.value);
-  }
+  };
 
   return (
     <react.Fragment>
-      
       {!isClicked && (
         <button
           className={classes["open-form-button"]}
@@ -134,37 +112,55 @@ const ReminderSection = (props) => {
         />
       )}
       <div className={classes["list-section"]}>
-        <div className={classes['search-wrapper']}>
-          <input className={classes.search} type="text" placeholder="Search" onChange={searchHandler} />
+        <div className={classes["search-wrapper"]}>
+          <input
+            className={classes.search}
+            type="text"
+            placeholder="Search"
+            onChange={searchHandler}
+          />
         </div>
         {/* <div className={classes['reminders-wrapper']}> */}
 
-        
-        {isLoading && <div className={classes["lds-ellipsis"]}><div></div><div></div><div></div><div></div></div>}
-        {!isLoading && <ul className={classes.ul}>
-          {reminderList.filter((val) => {
-            if(searchText === "") {
-              return val;
-            } else if(val.title.toLowerCase().includes(searchText.toLowerCase()) || val.title.toLowerCase().includes(searchText.toLowerCase())) {
-              return val;
-            }
-          }).map((reminder) => {
-            return (
-              <Reminder
-                key={reminder._id}
-                id={reminder._id}
-                title={reminder.title}
-                body={reminder.body}
-                date={reminder.date}
-                time={reminder.time}
-                color={reminder.color}
-                onDeleteReminder={deleteReminderFromList}
-                onEditReminderRefresh={getReminders}
-              />
-            );
-          })}
-        </ul>}
-        </div>
+        {isLoading && (
+          <div className={classes["lds-ellipsis"]}>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        )}
+        {!isLoading && (
+          <ul className={classes.ul}>
+            {reminderList
+              .filter((val) => {
+                if (searchText === "") {
+                  return val;
+                } else if (
+                  val.title.toLowerCase().includes(searchText.toLowerCase()) ||
+                  val.title.toLowerCase().includes(searchText.toLowerCase())
+                ) {
+                  return val;
+                }
+              })
+              .map((reminder) => {
+                return (
+                  <Reminder
+                    key={reminder._id}
+                    id={reminder._id}
+                    title={reminder.title}
+                    body={reminder.body}
+                    date={reminder.date}
+                    time={reminder.time}
+                    color={reminder.color}
+                    onDeleteReminder={deleteReminderFromList}
+                    onEditReminderRefresh={getReminders}
+                  />
+                );
+              })}
+          </ul>
+        )}
+      </div>
       {/* </div> */}
     </react.Fragment>
   );

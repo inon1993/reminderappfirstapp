@@ -13,13 +13,12 @@ const AddReminderForm = (props) => {
   const [isEmpty, setIsEmpty] = useState(false);
 
   useEffect(() => {
-    // setIsEmpty(false);
     const current = new Date();
     let day = "";
     let month = "";
     let hours = "";
     let minutes = "";
-    // let seconds = "";
+
     if (current.getDate() < 10) {
       day = `0${current.getDate()}`;
     } else {
@@ -41,17 +40,14 @@ const AddReminderForm = (props) => {
     } else {
       minutes = current.getMinutes();
     }
-    
+
     setTime(hours + ":" + minutes);
 
-    console.log(time);
-
-    setEnteredTime(hours + ":" + minutes)
+    setEnteredTime(hours + ":" + minutes);
 
     setDate(`${current.getFullYear()}-${month}-${day}`);
 
-    setEnteredDate(`${current.getFullYear()}-${month}-${day}`)
-    console.log(date);
+    setEnteredDate(`${current.getFullYear()}-${month}-${day}`);
   }, [date, time]);
 
   const closeFormHandler = () => {
@@ -63,25 +59,21 @@ const AddReminderForm = (props) => {
 
   const addReminderHandler = (event) => {
     event.preventDefault();
-    console.log("date: " + date + " time: " + time + " e-date: " + enteredDate + " e-time: " + enteredTime);
     const title = titleRef.current.value;
-    console.log(title);
     const body = bodyRef.current.value;
-    console.log(body);
 
-    if(title === "" || body === "") {
-      setIsEmpty(true)
+    if (title === "" || body === "") {
+      setIsEmpty(true);
       setTimeout(() => {
         setIsEmpty(false);
-      }, 2000)
-      return 
+      }, 2000);
+      return;
     } else {
-      setIsEmpty(false)
+      setIsEmpty(false);
     }
-    
+
     let reminderDate = "";
     if (enteredDate.trim().length === 0) {
-      console.log(date);
       reminderDate = date;
     } else {
       reminderDate = enteredDate;
@@ -89,13 +81,10 @@ const AddReminderForm = (props) => {
 
     let reminderTime = "";
     if (enteredTime.trim().length === 0) {
-      console.log(time);
       reminderTime = time;
     } else {
       reminderTime = enteredTime;
     }
-
-    console.log(title, body, reminderDate, reminderTime, isColor);
 
     props.onAddReminder(title, body, reminderDate, reminderTime, isColor);
 
@@ -108,47 +97,44 @@ const AddReminderForm = (props) => {
   const changeDateHandler = (event) => {
     setEnteredDate(event.target.value);
 
-    if(event.target.value !== date) {
+    if (event.target.value !== date) {
       setFix("00:00");
     } else {
-      setFix(time)
+      setFix(time);
     }
   };
 
   const changeTimeHandler = (event) => {
-    if(enteredDate === "" || enteredDate === date) {
-      setFix(time)
+    if (enteredDate === "" || enteredDate === date) {
+      setFix(time);
     }
     setEnteredTime(event.target.value);
-    console.log(enteredTime);
   };
 
   const colorChange = (event) => {
     setIsColor(event.target.value);
-    console.log(isColor);
   };
 
   return (
-    <Card className={classes['card-form']}>
+    <Card className={classes["card-form"]}>
       <form
         className={classes["add-reminder-form"]}
         onSubmit={addReminderHandler}
       >
         <label className={classes.title}>Title:</label>
-        <input
-          className={classes["title-input"]}
-          ref={titleRef}
-          // maxLength="15"
-        />
+        <input className={classes["title-input"]} ref={titleRef} />
         <label className={classes.body}>Reminder Body:</label>
         <textarea
           className={classes["body-input"]}
           rows="10"
           cols="50"
           ref={bodyRef}
-          // maxLength="50"
         />
-        {isEmpty && <p className={classes.empty}>Title or Body are missing. Reminder will not be saved.</p>}
+        {isEmpty && (
+          <p className={classes.empty}>
+            Title or Body are missing. Reminder will not be saved.
+          </p>
+        )}
         <label className={classes.date}>Pick a Date and Time:</label>
         <div className={classes["date-time-inputs"]}>
           <input
@@ -205,12 +191,7 @@ const AddReminderForm = (props) => {
           </ul>
         </div>
         <div className={classes.buttons}>
-          <button
-            className={classes["add-button"]}
-            // onClick={addReminderHandler}
-          >
-            Add Reminder
-          </button>
+          <button className={classes["add-button"]}>Add Reminder</button>
           <button
             className={classes["close-button"]}
             onClick={closeFormHandler}
