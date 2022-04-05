@@ -88,10 +88,7 @@ const AddReminderForm = (props) => {
 
     props.onAddReminder(title, body, reminderDate, reminderTime, isColor);
 
-    setIsColor("white");
-
-    titleRef.current.value = "";
-    bodyRef.current.value = "";
+    props.onCloseForm();
   };
 
   const changeDateHandler = (event) => {

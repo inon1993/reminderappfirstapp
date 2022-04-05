@@ -22,6 +22,7 @@ const sendMail = (data, foundUser, page, callback) => {
     html: page,
     send_at: unixTimeStamp,
   };
+  console.log(message);
   sgMail
     .send(message)
     .then(() => {
@@ -31,7 +32,7 @@ const sendMail = (data, foundUser, page, callback) => {
     .catch((error) => {
       console.log(error);
       console.log("err");
-      callback("Sending mail has Faild!", undefined)
+      callback("Sending mail has Faild!", undefined);
     });
 };
 
