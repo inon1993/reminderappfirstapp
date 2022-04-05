@@ -5,13 +5,15 @@ import classes from "./AddReminderForm.module.css";
 
 const AddReminderForm = (props) => {
   const [date, setDate] = useState("");
-  const [enteredDate, setEnteredDate] = useState(date);
+  const [enteredDate, setEnteredDate] = useState("");
   const [time, setTime] = useState("");
-  const [enteredTime, setEnteredTime] = useState(time);
+  const [enteredTime, setEnteredTime] = useState("");
   const [isColor, setIsColor] = useState("white");
   const [fix, setFix] = useState("00:00");
+  const [isEmpty, setIsEmpty] = useState(false);
 
   useEffect(() => {
+    // setIsEmpty(false);
     const current = new Date();
     let day = "";
     let month = "";
@@ -39,33 +41,16 @@ const AddReminderForm = (props) => {
     } else {
       minutes = current.getMinutes();
     }
-    // if (current.getSeconds() < 10) {
-    //   seconds = `0${current.getSeconds()}`;
-    // } else {
-    //   seconds = current.getSeconds();
-    // }
-    // const dt = new Date(
-    //   Date.UTC(
-    //     current.getFullYear(),
-    //     current.getMonth(),
-    //     current.getDate(),
-    //     current.getHours(),
-    //     current.getMinutes(),
-    //     current.getSeconds()
-    //   )
-    // );
-    // const opt = {
-    //   weekday: "short",
-    //   year: "numeric",
-    //   month: "short",
-    //   day: "numeric",
-    // };
-    // console.log(dt.toLocaleDateString("en-US", opt));
-    setTime(hours + ":" + minutes /*+ ":" + seconds*/);
+    
+    setTime(hours + ":" + minutes);
 
     console.log(time);
 
+    setEnteredTime(hours + ":" + minutes)
+
     setDate(`${current.getFullYear()}-${month}-${day}`);
+
+    setEnteredDate(`${current.getFullYear()}-${month}-${day}`)
     console.log(date);
   }, [date, time]);
 
@@ -78,8 +63,22 @@ const AddReminderForm = (props) => {
 
   const addReminderHandler = (event) => {
     event.preventDefault();
+    console.log("date: " + date + " time: " + time + " e-date: " + enteredDate + " e-time: " + enteredTime);
     const title = titleRef.current.value;
+    console.log(title);
     const body = bodyRef.current.value;
+    console.log(body);
+
+    if(title === "" || body === "") {
+      setIsEmpty(true)
+      setTimeout(() => {
+        setIsEmpty(false);
+      }, 2000)
+      return 
+    } else {
+      setIsEmpty(false)
+    }
+    
     let reminderDate = "";
     if (enteredDate.trim().length === 0) {
       console.log(date);
@@ -95,6 +94,8 @@ const AddReminderForm = (props) => {
     } else {
       reminderTime = enteredTime;
     }
+
+    console.log(title, body, reminderDate, reminderTime, isColor);
 
     props.onAddReminder(title, body, reminderDate, reminderTime, isColor);
 
@@ -112,14 +113,6 @@ const AddReminderForm = (props) => {
     } else {
       setFix(time)
     }
-    // console.log("date is " + enteredDate);
-    // console.log(date);
-    // setFix(time)
-    // if (event.target.value !== date) {
-    //   setFix("00:00");
-    // } else {
-    //   setFix(time);
-    // }
   };
 
   const changeTimeHandler = (event) => {
@@ -155,6 +148,7 @@ const AddReminderForm = (props) => {
           ref={bodyRef}
           // maxLength="50"
         />
+        {isEmpty && <p className={classes.empty}>Title or Body are missing. Reminder will not be saved.</p>}
         <label className={classes.date}>Pick a Date and Time:</label>
         <div className={classes["date-time-inputs"]}>
           <input

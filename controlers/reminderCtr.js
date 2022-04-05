@@ -26,11 +26,13 @@ const saveReminder = async (req, res) => {
       if(user) {
         const year = new Date();
         ejs.renderFile('views/index.ejs', {title: data.title, body: data.body, year: year.getFullYear()}, (err, page) => {
+            console.log(page);
           if (err) {
             return res.status(500).json({ msg: "Sorry, internal server errors." });
           } else {
             sendMail(data, user, page, (err, success) => {
               if (err) {
+                  console.log("err check");
                 return res.status(500).json({ msg: "Sorry, internal server errors." });
               } else {
                 res.json({msg: "We received your data!",});

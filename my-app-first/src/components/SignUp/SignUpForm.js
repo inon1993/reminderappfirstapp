@@ -236,7 +236,7 @@ const SignUpForm = (props) => {
         className={`${classes["pw-input"]} ${
           passwordState.isValid === false && classes["invalid-input"]
         }`}
-        type="text"
+        type="password"
         id="password"
         autoComplete="off"
         value={passwordState.value}

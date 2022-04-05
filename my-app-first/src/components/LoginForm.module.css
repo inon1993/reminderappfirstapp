@@ -58,6 +58,7 @@
 }
 
 .invalid-login-msg {
+  font-weight: bold;
   text-align: center;
   width: 100%;
   margin: 1rem 0 0 0;
